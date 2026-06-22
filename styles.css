@@ -27,7 +27,7 @@
   }
 
   /* ── NAV ── */
-  nav {
+  body > nav {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
@@ -229,7 +229,7 @@
   }
 
   .hcard-badge {
-    font-size: 0.7rem; font-weight: 700;
+    font-size: 0.98rem; font-weight: 700;
     padding: 0.25rem 0.7rem; border-radius: 100px;
     letter-spacing: 0.03em;
   }
@@ -238,15 +238,15 @@
 
   .hcard h4 {
     font-family: 'Lora', serif;
-    font-size: 0.95rem; font-weight: 500;
+    font-size: 1.1rem; font-weight: 500;
     color: var(--brown); margin-bottom: 0.3rem;
   }
-  .hcard p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+  .hcard p { font-size: 1.14rem; color: var(--muted); line-height: 1.5; }
 
   .hcard-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-top: 0.8rem; }
   .hcard-list li {
     display: flex; align-items: center; justify-content: space-between;
-    font-size: 0.8rem; padding-bottom: 0.55rem;
+    font-size: 1.14rem; padding-bottom: 0.55rem;
     border-bottom: 1px solid var(--warm-border);
   }
   .hcard-list li:last-child { border-bottom: none; padding-bottom: 0; }
@@ -268,7 +268,7 @@
     font-size: 1.5rem; font-weight: 500;
     color: var(--terra); line-height: 1;
   }
-  .mini-cell-lbl { font-size: 0.7rem; color: var(--muted); margin-top: 0.2rem; }
+  .mini-cell-lbl { font-size: 1.02rem; color: var(--muted); margin-top: 0.2rem; }
 
   /* ── ANIMACJE WEJŚCIA ── */
   @keyframes fadeUp {
@@ -322,9 +322,9 @@
     background: var(--terra-dim);
     border: 1px solid rgba(201,107,63,0.2);
     color: var(--terra);
-    font-size: 0.85rem;
+    font-size: 1.14rem;
     font-weight: 600;
-    padding: 0.5rem 1.3rem;
+    padding: 0.55rem 1.4rem;
     border-radius: 100px;
     margin-bottom: 2rem;
   }
@@ -366,7 +366,7 @@
     color: white;
     border-radius: 100px;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1.14rem;
     font-weight: 600;
     transition: all 0.25s;
     display: inline-flex;
@@ -387,7 +387,7 @@
     border: 2px solid var(--sand);
     border-radius: 100px;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1.14rem;
     font-weight: 600;
     transition: all 0.25s;
   }
@@ -419,14 +419,14 @@
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: var(--terra);
   }
 
   .hero-avatars .hero-avatar:first-child { margin-left: 0; }
 
   .hero-team-text {
-    font-size: 0.88rem;
+    font-size: 1.06rem;
     color: var(--muted);
     font-weight: 500;
     text-align: left;
@@ -474,14 +474,14 @@
 
   .value-item h4 {
     font-family: 'Lora', serif;
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: 500;
     color: var(--brown);
     margin-bottom: 0.5rem;
   }
 
   .value-item p {
-    font-size: 0.83rem;
+    font-size: 1.18rem;
     color: var(--muted);
     line-height: 1.65;
   }
@@ -494,7 +494,7 @@
   }
 
   .section-eyebrow {
-    font-size: 0.78rem;
+    font-size: 1.08rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -570,26 +570,28 @@
 
   .service-card h3 {
     font-family: 'Lora', serif;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 500;
     color: var(--brown);
     margin-bottom: 0.7rem;
   }
 
   .service-card p {
-    font-size: 0.87rem;
+    font-size: 1rem;
     line-height: 1.75;
     color: var(--muted);
   }
 
-  /* ── ABOUT ── */
+  /* ── ABOUT (jasna paleta) ── */
   .about {
     padding: 7rem 5vw;
-    background: var(--brown);
-    color: var(--cream);
+    background: var(--cream-mid);
+    color: var(--brown);
     position: relative;
     z-index: 1;
     overflow: hidden;
+    border-top: 1px solid var(--warm-border);
+    border-bottom: 1px solid var(--warm-border);
   }
 
   .about::before {
@@ -600,7 +602,7 @@
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,107,63,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(201,107,63,0.15) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -611,14 +613,14 @@
     align-items: center;
   }
 
-  .about-text .section-eyebrow { color: var(--terra-light); }
+  .about-text .section-eyebrow { color: var(--terra); }
 
-  .about-text .section-title { color: var(--cream); max-width: 100%; }
+  .about-text .section-title { color: var(--brown); max-width: 100%; }
 
   .about-text p {
-    font-size: 0.95rem;
+    font-size: 1.08rem;
     line-height: 1.85;
-    color: rgba(250,247,242,0.65);
+    color: rgba(45,31,20,0.78);
     margin-bottom: 1.2rem;
   }
 
@@ -638,22 +640,24 @@
   .about-feature-check {
     width: 22px;
     height: 22px;
-    background: rgba(201,107,63,0.2);
+    background: var(--terra);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
+    font-size: 0.84rem;
     flex-shrink: 0;
     margin-top: 1px;
-    color: var(--terra-light);
+    color: white;
+    font-weight: 700;
   }
 
   .about-feature span {
-    font-size: 0.87rem;
-    color: rgba(250,247,242,0.8);
+    font-size: 1rem;
+    color: var(--brown);
     line-height: 1.5;
   }
+  .about-feature span strong { color: var(--brown); }
 
   .about-image-grid {
     display: grid;
@@ -700,7 +704,7 @@
   }
 
   .about-img-stat .lbl {
-    font-size: 0.8rem;
+    font-size: 1.14rem;
     color: rgba(255,255,255,0.75);
     margin-top: 0.3rem;
   }
@@ -720,7 +724,7 @@
   }
 
   .clients-desc {
-    font-size: 0.95rem;
+    font-size: 1.08rem;
     line-height: 1.8;
     color: var(--muted);
     margin-top: 1rem;
@@ -755,14 +759,14 @@
 
   .client-card h3 {
     font-family: 'Lora', serif;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 500;
     color: var(--brown);
     margin-bottom: 0.7rem;
   }
 
   .client-card p {
-    font-size: 0.84rem;
+    font-size: 1rem;
     line-height: 1.7;
     color: var(--muted);
   }
@@ -815,7 +819,7 @@
 
   .stat-label {
     font-family: 'Nunito', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     color: var(--brown);
     opacity: 0.7;
     line-height: 1.4;
@@ -847,7 +851,7 @@
   .testimonial p {
     font-family: 'Lora', serif;
     font-style: italic;
-    font-size: 0.95rem;
+    font-size: 1.14rem;
     line-height: 1.8;
     color: var(--brown);
     margin-bottom: 1.5rem;
@@ -868,18 +872,18 @@
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 0.82rem;
+    font-size: 0.98rem;
     color: white;
   }
 
   .person-name {
     font-weight: 600;
-    font-size: 0.88rem;
+    font-size: 1.06rem;
     color: var(--brown);
   }
 
   .person-role {
-    font-size: 0.78rem;
+    font-size: 0.94rem;
     color: var(--muted);
   }
 
@@ -919,7 +923,7 @@
 
   .faq-question h4 {
     font-family: 'Lora', serif;
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: 500;
     color: var(--brown);
     line-height: 1.4;
@@ -957,20 +961,22 @@
 
   .faq-answer p {
     padding: 0 1.8rem 1.4rem;
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     line-height: 1.8;
     color: var(--muted);
   }
 
-  /* ── CONTACT ── */
+  /* ── CONTACT (jasna paleta) ── */
   .contact {
     padding: 8rem 5vw;
     text-align: center;
-    background: var(--terra);
-    color: white;
+    background: var(--cream-mid);
+    color: var(--brown);
     position: relative;
     z-index: 1;
     overflow: hidden;
+    border-top: 1px solid var(--warm-border);
+    border-bottom: 1px solid var(--warm-border);
   }
 
   .contact::before {
@@ -981,7 +987,7 @@
     width: 600px;
     height: 600px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.05);
+    background: radial-gradient(circle, rgba(201,107,63,0.12) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -993,7 +999,7 @@
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: rgba(0,0,0,0.1);
+    background: radial-gradient(circle, rgba(201,107,63,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -1002,16 +1008,18 @@
     font-size: clamp(2.2rem, 4vw, 3.5rem);
     font-weight: 500;
     line-height: 1.2;
+    color: var(--brown);
     margin-bottom: 1.2rem;
     position: relative;
     z-index: 1;
   }
+  .contact h2 em { font-style: italic; color: var(--terra); }
 
   .contact p {
     font-size: 1rem;
     line-height: 1.8;
-    color: rgba(255,255,255,0.8);
-    max-width: 480px;
+    color: var(--muted);
+    max-width: 540px;
     margin: 0 auto 3rem;
     position: relative;
     z-index: 1;
@@ -1028,33 +1036,57 @@
   }
 
   .contact-card {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: white;
+    border: 1px solid var(--warm-border);
     border-radius: 16px;
     padding: 1.5rem 2rem;
-    backdrop-filter: blur(8px);
     text-align: center;
     min-width: 160px;
-    transition: background 0.2s;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    box-shadow: 0 2px 12px rgba(45,31,20,0.04);
   }
 
-  .contact-card:hover { background: rgba(255,255,255,0.18); }
+  .contact-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(201,107,63,0.35);
+    box-shadow: 0 10px 28px rgba(45,31,20,0.08);
+  }
 
   .contact-card-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
 
   .contact-card-label {
-    font-size: 0.7rem;
+    font-size: 1.02rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.65);
+    color: var(--muted);
     margin-bottom: 0.3rem;
     font-weight: 600;
   }
 
   .contact-card-value {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    color: white;
+    color: var(--brown);
+  }
+
+  /* Mapa Google na kontakcie */
+  .contact-map {
+    margin-top: 3.5rem;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--warm-border);
+    box-shadow: 0 10px 40px rgba(45,31,20,0.1);
+    position: relative;
+    z-index: 1;
+  }
+  .contact-map iframe {
+    width: 100%;
+    height: 420px;
+    border: 0;
+    display: block;
   }
 
   .btn-white {
@@ -1066,7 +1098,7 @@
     color: var(--terra);
     border-radius: 100px;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1.14rem;
     font-weight: 700;
     transition: all 0.25s;
     position: relative;
@@ -1152,11 +1184,11 @@
 
   .footer-logo span { color: var(--terra-light); }
 
-  .footer-col p { font-size: 0.9rem; line-height: 1.6; max-width: 280px; }
+  .footer-col p { font-size: 1.02rem; line-height: 1.6; max-width: 280px; }
 
   .footer-col h4 {
     font-family: 'Nunito', sans-serif;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: rgba(250,247,242,0.5);
@@ -1164,16 +1196,22 @@
     font-weight: 700;
   }
 
-  .footer-col a, .footer-col span {
+  .footer-col > a, .footer-col > span {
     display: block;
-    font-size: 0.92rem;
+    font-size: 1.02rem;
     color: rgba(250,247,242,0.8);
     text-decoration: none;
     margin-bottom: 0.7rem;
     transition: color 0.2s;
   }
 
-  .footer-col a:hover { color: var(--terra-light); }
+  .footer-col > span a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col > span a:hover,
+  .footer-col > a:hover { color: var(--terra-light); }
 
   .footer-bottom {
     display: flex;
@@ -1182,7 +1220,7 @@
     gap: 0.5rem;
     padding: 1.5rem 5vw;
     border-top: 1px solid rgba(255,255,255,0.08);
-    font-size: 0.78rem;
+    font-size: 1.08rem;
     color: rgba(250,247,242,0.45);
   }
 
@@ -1206,3 +1244,249 @@
   }
 
   .nav-links a.active { color: var(--terra); }
+
+  /* ── SERVICES INTRO (2-kolumnowy layout: tekst + ToC) ── */
+  .services-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3.5rem;
+  }
+  .services-intro__text { display: flex; flex-direction: column; }
+  .services-intro__text .section-title { margin-bottom: 1.4rem; }
+
+  @media (max-width: 960px) {
+    .services-intro {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  /* ── SERVICES TOC (Spis usług) ── */
+  .services-toc {
+    background: var(--cream-mid);
+    border: 1px solid var(--warm-border);
+    border-radius: 22px;
+    padding: 1.8rem 2rem;
+    margin-bottom: 0;
+  }
+  .services-toc__title {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--brown);
+    margin: 0 0 1.15rem 0;
+    letter-spacing: -0.01em;
+  }
+  .services-toc__list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0;
+    margin: 0;
+  }
+  .services-toc__list li { margin: 0; }
+  .services-toc__list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.6rem 1.25rem;
+    background: white;
+    color: var(--brown);
+    border: 1px solid var(--warm-border);
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 600;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .services-toc__list a:hover {
+    background: var(--terra-dim);
+    border-color: rgba(201,107,63,0.4);
+    color: var(--terra);
+    transform: translateY(-1px);
+  }
+  .services-toc__list a.services-toc__highlighted {
+    background: var(--terra);
+    color: white;
+    border-color: var(--terra);
+  }
+  .services-toc__list a.services-toc__highlighted:hover {
+    background: var(--terra-light);
+    border-color: var(--terra-light);
+    color: white;
+  }
+  /* Scroll-offset żeby anchor links nie chowały się pod sticky nav */
+  .service-card[id], .service[id] { scroll-margin-top: 100px; }
+
+  /* ── SERVICES LIST (rozszerzony format usług) ── */
+  .services-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .service {
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--warm-border);
+  }
+  .service:first-child { border-top: none; padding-top: 1rem; }
+  .service__layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .service__meta { position: relative; }
+  .service__icon {
+    width: 96px;
+    height: 96px;
+    background: var(--cream-mid);
+    border: 1px solid var(--warm-border);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    margin-bottom: 1.4rem;
+  }
+  .service__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--cream-mid);
+    color: var(--brown-mid);
+    font-size: 1.02rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.4rem 0.9rem;
+    border-radius: 100px;
+    border: 1px solid var(--warm-border);
+    margin-bottom: 1rem;
+  }
+  .service__badge--accent {
+    background: var(--terra);
+    color: white;
+    border-color: var(--terra);
+  }
+  .service__meta h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--brown);
+    line-height: 1.2;
+    margin: 0 0 0.8rem;
+    letter-spacing: -0.015em;
+  }
+  .service__meta > p {
+    font-size: 1.08rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .service__content > p {
+    font-size: 1.12rem;
+    color: var(--brown);
+    line-height: 1.85;
+    margin: 0 0 1.6rem;
+  }
+  .service__content > p strong { color: var(--terra); font-weight: 700; }
+  .service__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .service__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    font-size: 1.08rem;
+    color: var(--brown);
+    line-height: 1.6;
+  }
+  .service__list li::before {
+    content: '✓';
+    color: var(--terra);
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    line-height: 1.45;
+  }
+
+  @media (max-width: 960px) {
+    .service__layout {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .service__icon { width: 72px; height: 72px; font-size: 2.1rem; border-radius: 18px; }
+    .service__meta h3 { font-size: 1.4rem; }
+    .service { padding: 2.5rem 0; }
+  }
+
+  /* ── COOKIE BANNER (RODO) ── */
+  .cookie-banner {
+    position: fixed;
+    bottom: 24px; left: 24px; right: 24px;
+    background: white;
+    border: 1px solid var(--warm-border);
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(45,31,20,0.15);
+    padding: 22px 26px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+    z-index: 200;
+    max-width: 880px;
+    margin: 0 auto;
+    transform: translateY(140%);
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .cookie-banner.is-visible { transform: translateY(0); }
+  .cookie-banner p {
+    font-size: 1rem;
+    color: var(--brown);
+    margin: 0;
+    flex: 1;
+    line-height: 1.55;
+  }
+  .cookie-banner a { color: var(--terra); font-weight: 600; text-decoration: underline; }
+  .cookie-banner__actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .cookie-banner__btn {
+    border: none;
+    padding: 11px 24px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .cookie-banner__btn--accept {
+    background: var(--terra);
+    color: white;
+  }
+  .cookie-banner__btn--accept:hover {
+    background: var(--terra-light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(201,107,63,0.3);
+  }
+
+  @media (max-width: 768px) {
+    .cookie-banner {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+      padding: 18px;
+      bottom: 12px; left: 12px; right: 12px;
+    }
+    .cookie-banner__actions { width: 100%; }
+    .cookie-banner__btn { width: 100%; }
+  }

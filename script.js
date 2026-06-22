@@ -61,6 +61,25 @@
 
   // Nav shrink on scroll
   const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    nav.style.padding = window.scrollY > 60 ? '0.8rem 5vw' : '';
-  }, { passive: true });
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.style.padding = window.scrollY > 60 ? '0.8rem 5vw' : '';
+    }, { passive: true });
+  }
+
+  // Cookie banner (RODO — wersja informacyjna, tylko cookies techniczne)
+  const COOKIE_KEY = 'cookies-consent';
+  const cookieBanner = document.querySelector('.cookie-banner');
+  if (cookieBanner) {
+    const consent = localStorage.getItem(COOKIE_KEY);
+    if (!consent) {
+      setTimeout(() => cookieBanner.classList.add('is-visible'), 800);
+    }
+    const acceptBtn = cookieBanner.querySelector('[data-cookie-action="accept"]');
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem(COOKIE_KEY, 'accepted');
+        cookieBanner.classList.remove('is-visible');
+      });
+    }
+  }
