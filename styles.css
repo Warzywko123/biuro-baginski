@@ -41,15 +41,30 @@
   }
 
   .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
     font-family: 'Lora', serif;
     font-size: 1.65rem;
     font-weight: 600;
     color: var(--brown);
-    text-decoration: none;
     letter-spacing: -0.02em;
+    line-height: 1;
   }
 
   .nav-logo span { color: var(--terra); }
+
+  .nav-logo img {
+    height: 62px;
+    width: auto;
+    display: block;
+    transition: transform 0.25s;
+  }
+  .nav-logo:hover img { transform: scale(1.03); }
+
+  @media (max-width: 768px) {
+    .nav-logo img { height: 48px; }
+  }
 
   .nav-links {
     display: flex;
@@ -1175,14 +1190,30 @@
   }
 
   .footer-logo {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 0.8rem;
     font-family: 'Lora', serif;
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--cream);
-    margin-bottom: 0.8rem;
+    transition: opacity 0.25s;
   }
 
   .footer-logo span { color: var(--terra-light); }
+
+  .footer-logo img {
+    height: 77px;
+    width: auto;
+    display: block;
+    transition: transform 0.25s;
+  }
+  .footer-logo:hover img { transform: scale(1.03); }
+  .footer-logo:hover { opacity: 0.9; }
+
+  @media (max-width: 768px) {
+    .footer-logo img { height: 62px; }
+  }
 
   .footer-col p { font-size: 1.02rem; line-height: 1.6; max-width: 280px; }
 
@@ -1425,6 +1456,86 @@
     .service__icon { width: 72px; height: 72px; font-size: 2.1rem; border-radius: 18px; }
     .service__meta h3 { font-size: 1.4rem; }
     .service { padding: 2.5rem 0; }
+  }
+
+  /* ── ANIMACJE DODATKOWE ── */
+
+  /* 1. Subtelny float hero cards w stanie spoczynku */
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+  .hcard.anim-card-1 { animation: slideRight 0.7s cubic-bezier(0.22,1,0.36,1) 0.3s both, floatCard 5s ease-in-out 1.2s infinite; }
+  .hcard.anim-card-2 { animation: slideRight 0.7s cubic-bezier(0.22,1,0.36,1) 0.45s both, floatCard 5s ease-in-out 1.6s infinite; }
+  .hcard.anim-card-3 { animation: slideRight 0.7s cubic-bezier(0.22,1,0.36,1) 0.6s both, floatCard 5s ease-in-out 2.0s infinite; }
+
+  /* 2. Pulsujący zielony dot przy „Na bieżąco" / „Odpiszemy dziś" */
+  .hcard-badge.ok::before {
+    content: '';
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #3CA050;
+    margin-right: 0.45rem;
+    vertical-align: middle;
+    box-shadow: 0 0 0 0 rgba(60,160,80,0.6);
+    animation: pulseDot 2s ease-out infinite;
+  }
+  @keyframes pulseDot {
+    0%   { box-shadow: 0 0 0 0 rgba(60,160,80,0.6); }
+    70%  { box-shadow: 0 0 0 10px rgba(60,160,80,0); }
+    100% { box-shadow: 0 0 0 0 rgba(60,160,80,0); }
+  }
+
+  /* 3. Shimmer / shine na buttonach terra przy hover */
+  .btn-terra {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-terra::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(110deg, transparent 0%, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%, transparent 100%);
+    transition: left 0.6s ease;
+    pointer-events: none;
+  }
+  .btn-terra:hover::after { left: 100%; }
+
+  /* 4. Service-icon-wrap obraca się delikatnie przy hover na karcie */
+  .service-card:hover .service-icon-wrap {
+    transform: rotate(-8deg) scale(1.08);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .service-icon-wrap {
+    transition: transform 0.35s ease, background 0.3s;
+  }
+
+  /* 5. Service__icon (w expanded uslugi) — taki sam efekt */
+  .service:hover .service__icon {
+    transform: rotate(-6deg) scale(1.05);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .service__icon { transition: transform 0.35s ease; }
+
+  /* 6. ToC pill-buttony delikatne dygnięcie przy hover */
+  .services-toc__list a:hover {
+    animation: tocJiggle 0.4s ease;
+  }
+  @keyframes tocJiggle {
+    0%, 100% { transform: translateY(-1px) rotate(0); }
+    40%      { transform: translateY(-2px) rotate(-1.5deg); }
+    70%      { transform: translateY(-2px) rotate(1.5deg); }
+  }
+
+  /* 7. Respekt dla preferencji systemowych */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   /* ── COOKIE BANNER (RODO) ── */

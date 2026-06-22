@@ -40,23 +40,29 @@
     });
   }, { passive: true });
 
-  // Liczniki animowane
+  // Liczniki animowane — countup z 0 do wartości docelowej gdy element pojawi się w viewport
   const nums = document.querySelectorAll('[data-count]');
+  // Ustaw od razu na "0" żeby nie było flash przy starcie
+  nums.forEach(n => { n.textContent = '0' + (n.dataset.suffix || ''); });
   const countObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const el = entry.target;
       const target = parseInt(el.dataset.count);
-      let cur = 0;
-      const step = target / 50;
-      const t = setInterval(() => {
-        cur = Math.min(cur + step, target);
-        el.textContent = Math.floor(cur) + (el.dataset.suffix || '');
-        if (cur >= target) clearInterval(t);
-      }, 28);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400; // ms
+      const start = performance.now();
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        // easeOutQuart — szybko na start, wolno na końcu
+        const eased = 1 - Math.pow(1 - progress, 4);
+        el.textContent = Math.floor(target * eased) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
       countObs.unobserve(el);
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.4 });
   nums.forEach(n => countObs.observe(n));
 
   // Nav shrink on scroll
