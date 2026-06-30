@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /.claude/
-Sitemap: https://biuro-baginski-pila.pl/sitemap.xml
+Sitemap: https://biurorachunkowe-pila.pl/sitemap.xml
