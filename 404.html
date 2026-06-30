@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strona nie znaleziona (404) — Biuro Rachunkowe Bagiński</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap"></noscript>
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="styles.css?v=6">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#C96B3F">
+<style>
+  .err-page {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7rem 5vw 4rem;
+    background: var(--cream-mid);
+    position: relative;
+    overflow: hidden;
+  }
+  .err-page::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -150px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,107,63,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .err-page::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -150px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,107,63,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .err-card {
+    background: white;
+    border: 1px solid var(--warm-border);
+    border-radius: 24px;
+    padding: 3.5rem 3rem;
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(45,31,20,0.08);
+    position: relative;
+    z-index: 1;
+  }
+  .err-number {
+    font-family: 'Lora', serif;
+    font-size: clamp(4.5rem, 12vw, 7rem);
+    font-weight: 500;
+    color: var(--terra);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.5rem;
+  }
+  .err-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--terra-dim);
+    border: 1px solid rgba(201,107,63,0.2);
+    color: var(--terra);
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .err-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 500;
+    color: var(--brown);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .err-title em { font-style: italic; color: var(--terra); }
+  .err-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 440px;
+    margin: 0 auto 2.2rem;
+  }
+  .err-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .err-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--warm-border);
+  }
+  .err-links span {
+    width: 100%;
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+  .err-links a {
+    padding: 0.5rem 1.1rem;
+    background: var(--cream-mid);
+    border: 1px solid var(--warm-border);
+    border-radius: 100px;
+    color: var(--brown);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .err-links a:hover {
+    background: var(--terra-dim);
+    border-color: rgba(201,107,63,0.4);
+    color: var(--terra);
+  }
+  @media (max-width: 600px) {
+    .err-card { padding: 2.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Przejdź do treści</a>
+<nav aria-label="Główna nawigacja">
+  <a href="/" class="nav-logo" aria-label="Biuro Rachunkowe Grzegorz Bagiński — strona główna"><picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png?v=2" alt="Biuro Rachunkowe Grzegorz Bagiński" width="188" height="62"></picture></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Start</a></li>
+    <li><a href="uslugi.html">Usługi</a></li>
+    <li><a href="o-nas.html">O nas</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+    <li class="nav-mobile-only"><a href="tel:+48673570024" class="nav-mobile-cta">📞 +48 67 357 00 24</a></li>
+  </ul>
+  <a href="tel:+48673570024" class="nav-cta">📞 +48 67 357 00 24</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Otwórz menu">
+    <span class="nav-toggle__bar"></span>
+    <span class="nav-toggle__bar"></span>
+    <span class="nav-toggle__bar"></span>
+  </button>
+</nav>
+
+<main id="main-content" class="err-page">
+  <div class="err-card">
+    <div class="err-eyebrow">⚠️ Błąd 404</div>
+    <div class="err-number">404</div>
+    <h1 class="err-title">Hmm, tej strony <em>nie znaleźliśmy</em></h1>
+    <p class="err-desc">Adres, który wpisałeś, nie istnieje albo strona została przeniesiona. Spróbuj jednej z poniższych opcji — albo po prostu do nas zadzwoń.</p>
+    <div class="err-actions">
+      <a href="/" class="btn-terra">← Wróć na stronę główną</a>
+      <a href="tel:+48673570024" class="btn-outline">📞 Zadzwoń</a>
+    </div>
+    <div class="err-links">
+      <span>Może szukałeś:</span>
+      <a href="uslugi.html">Usługi</a>
+      <a href="o-nas.html">O nas</a>
+      <a href="faq.html">FAQ</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-cta">
+    <h2>Porozmawiajmy o Twojej firmie</h2>
+    <p>Krótka rozmowa telefoniczna, żeby zrozumieć Twoją sytuację — bez zobowiązań i bez sprzedawania na siłę.</p>
+    <div class="footer-cta-btns">
+      <a href="tel:+48673570024" class="btn-terra">📞 Zadzwoń: +48 67 357 00 24</a>
+      <a href="mailto:biurobg@op.pl" class="btn-outline-light">Napisz e-mail</a>
+    </div>
+  </div>
+  <div class="footer-columns">
+    <div class="footer-col">
+      <a href="/" class="footer-logo" aria-label="Biuro Rachunkowe Grzegorz Bagiński — strona główna"><picture><source srcset="img/logo-dark.webp" type="image/webp"><img src="img/logo-dark.png?v=2" alt="Biuro Rachunkowe Grzegorz Bagiński" width="233" height="77"></picture></a>
+      <p>Biuro Rachunkowe Grzegorz Bagiński — księgowość z ludzką twarzą, prowadzona z troską o każdego klienta w Pile.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <a href="index.html">Start</a>
+      <a href="uslugi.html">Usługi</a>
+      <a href="o-nas.html">O nas</a>
+      <a href="faq.html">FAQ</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <span>📞 <a href="tel:+48673570024">+48 67 357 00 24</a></span>
+      <span>📱 <a href="tel:+48607151260">+48 607 151 260</a></span>
+      <span>✉️ <a href="mailto:biurobg@op.pl">biurobg@op.pl</a></span>
+      <span>📍 ul. Makuszyńskiego 18<br>64-920 Piła</span>
+      <span>🕐 Pon–Pt 7:00–16:00</span>
+      <span>NIP: 764 105 74 57</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Biuro Rachunkowe Grzegorz Bagiński. Wszelkie prawa zastrzeżone.</p>
+    <p><a href="polityka-prywatnosci.html">Polityka prywatności</a> · Cert. MF 4813/1997</p>
+  </div>
+</footer>
+
+</body>
+</html>
