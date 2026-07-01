@@ -705,6 +705,12 @@
 
   .about-text .section-title { color: var(--brown); max-width: 100%; }
 
+  /* Wejście na starcie strony (nie scroll-triggered — sekcja jest blisko góry) */
+  .about-reveal-1 { animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s both; }
+  .about-reveal-2 { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.22s both; }
+  .about-reveal-3 { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.34s both; }
+  .about-reveal-4 { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.46s both; }
+
   .about-text p {
     font-size: 1.08rem;
     line-height: 1.85;
@@ -738,6 +744,14 @@
     margin-top: 1px;
     color: white;
     font-weight: 700;
+    transform: scale(0.4);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
+    transition-delay: calc(var(--reveal-delay, 0s) + 0.15s);
+  }
+  .about-feature.reveal.visible .about-feature-check {
+    transform: scale(1);
+    opacity: 1;
   }
 
   .about-feature span {
@@ -770,9 +784,24 @@
   .about-img.tall {
     grid-row: span 2;
     aspect-ratio: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .about-img.tall:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(45,31,20,0.1) !important;
   }
 
   .about-img.tall img { height: 100%; }
+
+  .about-ethics-icon {
+    display: inline-block;
+    width: fit-content;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .about-img.tall:hover .about-ethics-icon {
+    transform: rotate(-8deg) scale(1.12);
+  }
 
   .about-img-stat {
     border-radius: 16px;
@@ -795,6 +824,90 @@
     font-size: 1.14rem;
     color: rgba(255,255,255,0.75);
     margin-top: 0.3rem;
+  }
+
+  /* ── ABOUT TIMELINE (oś czasu 1991 → 1997 → dziś) ── */
+  .about-timeline {
+    margin-top: 5rem;
+    position: relative;
+  }
+
+  .about-timeline__title {
+    text-align: center;
+    font-size: 0.98rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--terra);
+    margin-bottom: 2.4rem;
+  }
+
+  .about-timeline__line {
+    display: block;
+    width: 100%;
+    height: 24px;
+    overflow: visible;
+  }
+
+  .about-timeline__progress {
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.22,1,0.36,1) 0.15s;
+  }
+  .about-timeline.visible .about-timeline__progress {
+    stroke-dashoffset: 0;
+  }
+
+  .about-timeline__points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: -0.4rem;
+  }
+
+  .about-timeline__point {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1);
+  }
+  .about-timeline.visible .about-timeline__points .about-timeline__point:nth-child(1) { transition-delay: 0.35s; }
+  .about-timeline.visible .about-timeline__points .about-timeline__point:nth-child(2) { transition-delay: 0.65s; }
+  .about-timeline.visible .about-timeline__points .about-timeline__point:nth-child(3) { transition-delay: 0.95s; }
+  .about-timeline.visible .about-timeline__point {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .about-timeline__dot {
+    display: block;
+    width: 14px;
+    height: 14px;
+    margin: 0 auto 0.9rem;
+    background: var(--terra);
+    border-radius: 50%;
+    border: 3px solid var(--cream-mid);
+    box-shadow: 0 0 0 2px var(--terra);
+  }
+
+  .about-timeline__year {
+    display: block;
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--terra);
+    margin-bottom: 0.4rem;
+  }
+
+  .about-timeline__label {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .about-timeline__line { display: none; }
+    .about-timeline__points { grid-template-columns: 1fr; gap: 2.2rem; }
   }
 
   /* ── CLIENTS ── */

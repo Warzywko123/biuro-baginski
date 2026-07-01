@@ -52,7 +52,7 @@
 
   // Scroll reveal — dodaj klasę .reveal lub .reveal-left do elementów poniżej hero
   const revealEls = document.querySelectorAll(
-    '.value-item, .service-card, .client-card, .testimonial, .about-feature, .pstep, .faq-item'
+    '.value-item, .service-card, .client-card, .testimonial, .about-feature, .pstep, .faq-item, .about-img, .about-img-stat, .about-timeline'
   );
 
   const revealObs = new IntersectionObserver((entries) => {
@@ -61,7 +61,9 @@
         // Opóźnienie zależne od pozycji wśród rodzeństwa
         const siblings = [...entry.target.parentElement.children];
         const idx = siblings.indexOf(entry.target);
-        entry.target.style.transitionDelay = `${idx * 0.08}s`;
+        const delay = `${idx * 0.08}s`;
+        entry.target.style.transitionDelay = delay;
+        entry.target.style.setProperty('--reveal-delay', delay);
         entry.target.classList.add('visible');
         revealObs.unobserve(entry.target);
       }
