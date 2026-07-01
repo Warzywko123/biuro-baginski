@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /.claude/
 Sitemap: https://biurorachunkowe-pila.pl/sitemap.xml

@@ -50,9 +50,9 @@
     });
   });
 
-  // Scroll reveal — dodaj klasę .reveal lub .reveal-left do elementów poniżej hero
+  // Scroll reveal — dodaj klasę .reveal do elementów poniżej hero
   const revealEls = document.querySelectorAll(
-    '.value-item, .service-card, .client-card, .testimonial, .about-feature, .pstep, .faq-item, .about-img, .about-img-stat, .about-timeline'
+    '.value-item, .client-card, .testimonial, .about-feature, .faq-item, .about-img, .about-img-stat, .about-timeline'
   );
 
   const revealObs = new IntersectionObserver((entries) => {
