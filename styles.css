@@ -1658,6 +1658,16 @@
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(201,107,63,0.3);
   }
+  .cookie-banner__btn--reject {
+    background: transparent;
+    color: var(--brown, #4a3728);
+    border: 1.5px solid rgba(0,0,0,0.18);
+    font-weight: 600;
+  }
+  .cookie-banner__btn--reject:hover {
+    border-color: var(--terra);
+    color: var(--terra);
+  }
 
   @media (max-width: 768px) {
     .cookie-banner {

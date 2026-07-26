@@ -13,7 +13,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#C96B3F">
 <style>
@@ -142,6 +142,26 @@
     .err-card { padding: 2.5rem 1.5rem; }
   }
 </style>
+
+<!-- Google Analytics 4 (Consent Mode v2 — domyślnie wyłączone, włącza się po akceptacji cookies) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RB6FRR4LMF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Consent Mode v2 — RODO: domyślnie wszystko denied.
+  // script.js zmieni analytics_storage na 'granted', jeśli użytkownik kliknie "Akceptuję".
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+
+  gtag('js', new Date());
+  gtag('config', 'G-RB6FRR4LMF', { 'anonymize_ip': true });
+</script>
 </head>
 <body>
 
@@ -222,6 +242,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>

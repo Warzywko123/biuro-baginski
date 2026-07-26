@@ -117,19 +117,65 @@
     }, { passive: true });
   }
 
-  // Cookie banner (RODO — wersja informacyjna, tylko cookies techniczne)
-  const COOKIE_KEY = 'cookies-consent';
+  // Śledzenie kontaktu (GA4) — telefon i e-mail to główne kanały kontaktu z biurem
+  document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+    link.addEventListener('click', function () {
+      if (typeof gtag !== 'function') return;
+      gtag('event', 'phone_click', {
+        phone_number: this.getAttribute('href').replace('tel:', ''),
+        link_text: this.textContent.trim(),
+        page_location: window.location.pathname
+      });
+    });
+  });
+
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    link.addEventListener('click', function () {
+      if (typeof gtag !== 'function') return;
+      gtag('event', 'mail_click', {
+        link_text: this.textContent.trim(),
+        page_location: window.location.pathname
+      });
+    });
+  });
+
+  // Baner cookies + Google Consent Mode v2 (RODO)
+  // GA4 rusza dopiero po kliknięciu "Akceptuję".
+  // Klucz celowo inny niż stary 'cookies-consent' — osoby, które kliknęły dawne
+  // "Rozumiem" (baner czysto informacyjny), muszą dostać realny wybór, a nie
+  // milczącą zgodę na analitykę.
+  const COOKIE_KEY = 'cookies-consent-v2';
   const cookieBanner = document.querySelector('.cookie-banner');
+
+  function updateGoogleConsent(granted) {
+    if (typeof gtag !== 'function') return;
+    gtag('consent', 'update', {
+      'analytics_storage': granted ? 'granted' : 'denied',
+      // ad_* zawsze denied — strona nie prowadzi reklam ani remarketingu
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+  }
+
+  // Zapisana zgoda obowiązuje na KAŻDEJ podstronie — także tam, gdzie nie ma
+  // banera (np. 404.html). Dlatego przywracamy ją poza warunkiem na baner.
+  const consent = localStorage.getItem(COOKIE_KEY);
+  if (consent === 'accepted') updateGoogleConsent(true);
+
   if (cookieBanner) {
-    const consent = localStorage.getItem(COOKIE_KEY);
-    if (!consent) {
+    if (consent !== 'accepted' && consent !== 'rejected') {
       setTimeout(() => cookieBanner.classList.add('is-visible'), 800);
     }
+
+    const decide = (value) => {
+      localStorage.setItem(COOKIE_KEY, value);
+      updateGoogleConsent(value === 'accepted');
+      cookieBanner.classList.remove('is-visible');
+    };
+
     const acceptBtn = cookieBanner.querySelector('[data-cookie-action="accept"]');
-    if (acceptBtn) {
-      acceptBtn.addEventListener('click', () => {
-        localStorage.setItem(COOKIE_KEY, 'accepted');
-        cookieBanner.classList.remove('is-visible');
-      });
-    }
+    const rejectBtn = cookieBanner.querySelector('[data-cookie-action="reject"]');
+    if (acceptBtn) acceptBtn.addEventListener('click', () => decide('accepted'));
+    if (rejectBtn) rejectBtn.addEventListener('click', () => decide('rejected'));
   }

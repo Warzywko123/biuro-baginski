@@ -16,7 +16,27 @@
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
+
+<!-- Google Analytics 4 (Consent Mode v2 — domyślnie wyłączone, włącza się po akceptacji cookies) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RB6FRR4LMF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Consent Mode v2 — RODO: domyślnie wszystko denied.
+  // script.js zmieni analytics_storage na 'granted', jeśli użytkownik kliknie "Akceptuję".
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+
+  gtag('js', new Date());
+  gtag('config', 'G-RB6FRR4LMF', { 'anonymize_ip': true });
+</script>
 </head>
 <body>
 
@@ -47,7 +67,7 @@
 
   <div class="policy-content" style="font-size:0.95rem; line-height:1.8; color:var(--brown);">
 
-    <p style="font-style:italic; color:var(--muted); margin-bottom:2rem;">Data ostatniej aktualizacji: 21 czerwca 2026 r.</p>
+    <p style="font-style:italic; color:var(--muted); margin-bottom:2rem;">Data ostatniej aktualizacji: 23 lipca 2026 r.</p>
 
     <h2 style="font-family:'Lora',serif; font-size:1.5rem; font-weight:500; color:var(--brown); margin-top:2.5rem; margin-bottom:1rem;">1. Administrator danych</h2>
     <p>Administratorem Twoich danych osobowych jest:</p>
@@ -71,9 +91,11 @@
     <p>Dane te są zbierane wyłącznie w celach technicznych (utrzymanie strony, diagnostyka błędów, bezpieczeństwo) i są przechowywane przez dostawcę hostingu zgodnie z jego polityką.</p>
 
     <h2 style="font-family:'Lora',serif; font-size:1.5rem; font-weight:500; color:var(--brown); margin-top:2.5rem; margin-bottom:1rem;">3. Ciasteczka (cookies)</h2>
-    <p>Strona używa wyłącznie <strong>cookies technicznych (niezbędnych)</strong>, np. zapamiętanie Twojego wyboru w bannerze cookies (klucz <code style="background:var(--cream-mid); padding:2px 6px; border-radius:4px; font-size:0.85em;">cookies-consent</code> w localStorage przeglądarki). Cookies techniczne są niezbędne do działania strony i nie wymagają zgody w rozumieniu RODO.</p>
-    <p>Strona <strong>nie używa</strong> cookies marketingowych, reklamowych, remarketingowych ani analitycznych. Nie korzystamy z Google Analytics, Facebook Pixel, Google Ads ani innych systemów reklamowych.</p>
-    <p>Możesz w każdej chwili usunąć ciasteczka z poziomu ustawień swojej przeglądarki.</p>
+    <p>Strona używa <strong>cookies technicznych (niezbędnych)</strong> — np. zapamiętania Twojego wyboru w banerze cookies (klucz <code style="background:var(--cream-mid); padding:2px 6px; border-radius:4px; font-size:0.85em;">cookies-consent-v2</code> w localStorage przeglądarki). Cookies techniczne są niezbędne do działania strony i nie wymagają zgody w rozumieniu RODO.</p>
+    <p>Dodatkowo — <strong>wyłącznie za Twoją zgodą</strong> — strona korzysta z <strong>Google Analytics 4</strong> do anonimowej analizy ruchu. Narzędzie zlicza odwiedziny, źródła ruchu oraz podstawowe interakcje (np. kliknięcie w numer telefonu lub adres e-mail). Adres IP jest maskowany, a dane są zagregowane i nie pozwalają na identyfikację konkretnej osoby. Dostawcą usługi jest Google Ireland Limited.</p>
+    <p>Przy pierwszej wizycie wyświetlamy baner z wyborem <strong>„Akceptuję"</strong> lub <strong>„Tylko niezbędne"</strong>. Do czasu wyrażenia zgody — oraz po wybraniu „Tylko niezbędne" — Google Analytics pozostaje wyłączone i nie zapisuje żadnych plików cookie (mechanizm Google Consent Mode v2). Zgodę możesz w każdej chwili wycofać, czyszcząc dane tej witryny w ustawieniach przeglądarki.</p>
+    <p>Strona <strong>nie używa</strong> cookies marketingowych, reklamowych ani remarketingowych. Nie korzystamy z Facebook Pixela, Google Ads ani innych systemów reklamowych, nie profilujemy użytkowników.</p>
+    <p>Możesz w każdej chwili usunąć ciasteczka z poziomu ustawień swojej przeglądarki, a śledzenie statystyk dodatkowo zablokować wtyczką <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color:var(--terra);">Google Analytics Opt-out</a>.</p>
 
     <h2 style="font-family:'Lora',serif; font-size:1.5rem; font-weight:500; color:var(--brown); margin-top:2.5rem; margin-bottom:1rem;">4. Usługi zewnętrzne osadzone na stronie</h2>
     <p>Aby strona działała poprawnie i była użyteczna, korzysta z następujących usług zewnętrznych:</p>
@@ -173,12 +195,13 @@
 </footer>
 
 <div class="cookie-banner" role="dialog" aria-label="Informacja o ciasteczkach">
-  <p>Strona używa wyłącznie cookies technicznych (zapamiętania Twojego wyboru). Nie korzystamy z Google Analytics ani trackerów reklamowych. Więcej w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
+  <p>Strona używa niezbędnych cookies technicznych oraz — za Twoją zgodą — <strong>Google Analytics</strong> do anonimowych statystyk odwiedzin. Więcej w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
   <div class="cookie-banner__actions">
-    <button class="cookie-banner__btn cookie-banner__btn--accept" type="button" data-cookie-action="accept">Rozumiem</button>
+    <button class="cookie-banner__btn cookie-banner__btn--accept" type="button" data-cookie-action="accept">Akceptuję</button>
+    <button class="cookie-banner__btn cookie-banner__btn--reject" type="button" data-cookie-action="reject">Tylko niezbędne</button>
   </div>
 </div>
 
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>
