@@ -1352,6 +1352,12 @@
     .footer-bottom { flex-direction: column; text-align: center; }
   }
 
+  /* Na telefonach kafelki statystyk nie mieszczą się w dwóch kolumnach
+     (wychodziły poza ekran i strona przewijała się w bok) */
+  @media (max-width: 560px) {
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+
   .nav-links a.active { color: var(--terra); }
 
   /* ── SERVICES INTRO (2-kolumnowy layout: tekst + ToC) ── */
