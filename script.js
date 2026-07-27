@@ -172,10 +172,40 @@
       localStorage.setItem(COOKIE_KEY, value);
       updateGoogleConsent(value === 'accepted');
       cookieBanner.classList.remove('is-visible');
+      // Mapa Google nasłuchuje tego zdarzenia i wczytuje się bez przeładowania
+      document.dispatchEvent(new CustomEvent('cookies-decision', { detail: value }));
     };
 
     const acceptBtn = cookieBanner.querySelector('[data-cookie-action="accept"]');
     const rejectBtn = cookieBanner.querySelector('[data-cookie-action="reject"]');
     if (acceptBtn) acceptBtn.addEventListener('click', () => decide('accepted'));
     if (rejectBtn) rejectBtn.addEventListener('click', () => decide('rejected'));
+  }
+
+  // ── Mapa Google dopiero za zgodą (RODO) ──
+  // Bez zgody iframe ma tylko data-src, więc przeglądarka nie łączy się
+  // z Google. Adres IP odwiedzającego trafia tam dopiero po kliknięciu
+  // "Akceptuję" w banerze albo "Pokaż mapę" na samej zaślepce.
+  const mapy = document.querySelectorAll('[data-map-consent]');
+  if (mapy.length) {
+    const pokazMape = (kontener) => {
+      const ramka = kontener.querySelector('iframe[data-src]');
+      if (!ramka) return;
+      ramka.src = ramka.getAttribute('data-src');
+      ramka.removeAttribute('data-src');
+      kontener.classList.add('is-map-loaded');
+    };
+
+    mapy.forEach((kontener) => {
+      if (consent === 'accepted') {
+        pokazMape(kontener);
+        return;
+      }
+      const przycisk = kontener.querySelector('[data-map-action="load"]');
+      if (przycisk) przycisk.addEventListener('click', () => pokazMape(kontener));
+    });
+
+    document.addEventListener('cookies-decision', (e) => {
+      if (e.detail === 'accepted') mapy.forEach(pokazMape);
+    });
   }

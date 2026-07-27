@@ -1168,6 +1168,67 @@
     display: block;
   }
 
+  /* ── Zaślepka mapy (RODO) ──
+     Przykrywa iframe do czasu zgody. Znika, gdy skrypt doda .is-map-loaded. */
+  .map-consent {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    background: var(--cream-mid);
+    background-image:
+      linear-gradient(var(--warm-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--warm-border) 1px, transparent 1px);
+    background-size: 44px 44px, 44px 44px;
+  }
+  .is-map-loaded .map-consent { display: none; }
+  .map-consent__pin { font-size: 2rem; line-height: 1; }
+  .map-consent__address {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--brown);
+    margin: 0;
+  }
+  .map-consent__note {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 42ch;
+    margin: 0;
+  }
+  .map-consent__note a { color: var(--terra); }
+  .map-consent__btn {
+    margin-top: 0.5rem;
+    padding: 0.9rem 1.8rem;
+    min-height: 44px;
+    border: 0;
+    border-radius: 100px;
+    background: var(--terra);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .map-consent__btn:hover { background: var(--terra-light); }
+  .map-consent__btn:focus-visible { outline: 3px solid var(--brown); outline-offset: 2px; }
+
+  /* Na telefonach zaślepka musi zmieścić się w 420px iframe'a bez przycinania. */
+  @media (max-width: 700px) {
+    .contact-map:not(.is-map-loaded) { min-height: 320px; }
+    .map-consent { padding: 1.25rem; gap: 0.35rem; }
+    .map-consent__pin { font-size: 1.6rem; }
+    .map-consent__address { font-size: 1.05rem; }
+    .map-consent__note { font-size: 0.9rem; line-height: 1.45; }
+    .map-consent__btn { padding: 0.75rem 1.5rem; font-size: 0.95rem; }
+  }
+
   footer {
     background: var(--brown);
     color: rgba(250,247,242,0.75);
