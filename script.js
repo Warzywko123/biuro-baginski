@@ -156,6 +156,12 @@
       'ad_user_data': 'denied',
       'ad_personalization': 'denied'
     });
+
+    // Skrypt Google pobieramy DOPIERO tutaj — bez zgody przeglądarka
+    // nie nawiązuje żadnego połączenia z serwerami Google.
+    if (granted && typeof window.wczytajGoogleAnalytics === 'function') {
+      window.wczytajGoogleAnalytics();
+    }
   }
 
   // Zapisana zgoda obowiązuje na KAŻDEJ podstronie — także tam, gdzie nie ma

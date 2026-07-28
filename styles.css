@@ -64,12 +64,12 @@
   :root {
     --cream: #FAF7F2;
     --cream-mid: #F2EDE4;
-    --terra: #C96B3F;
-    --terra-light: #E08055;
+    --terra: #a6552f;  /* 4.55:1 na kremowym tle strony, 5.30:1 z bielą — WCAG AA */
+    --terra-light: #c25523;  /* tło hover z białym napisem: 4.55:1; #E08055 dawało 2.84 */
     --terra-dim: rgba(201,107,63,0.1);
     --brown: #2D1F14;
     --brown-mid: #5C3D26;
-    --muted: #8C7160;
+    --muted: #806758;  /* 4.50:1 na kremowym tle; #8C7160 dawało 3.88 */
     --warm-border: rgba(201,107,63,0.15);
     --sand: #E8DDD2;
   }
@@ -1416,8 +1416,19 @@
     padding: 1.5rem 5vw;
     border-top: 1px solid rgba(255,255,255,0.08);
     font-size: 1.08rem;
-    color: rgba(250,247,242,0.45);
+    /* 0.45 dawało 4.12:1 na brązowym tle — poniżej progu AA dla tej wielkości */
+    color: rgba(250,247,242,0.6);
   }
+
+  /* Link do polityki nie miał żadnej reguły i dostawał domyślny niebieski
+     przeglądarki (#0000EE) na ciemnym tle — kontrast 1.7:1, praktycznie
+     nieczytelny. */
+  .footer-bottom a {
+    color: rgba(250,247,242,0.85);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .footer-bottom a:hover { color: #fff; }
 
   @media (max-width: 960px) {
     .hero { grid-template-columns: 1fr; }

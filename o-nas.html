@@ -9,14 +9,14 @@
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="stylesheet" href="styles.css?v=13">
-<meta name="description" content="Biuro Rachunkowe Grzegorz Bagiński działa od 1997 roku. Cert. MF 4813/1997, wykształcenie ekonomiczne (Akademia Ekonomiczna w Poznaniu). 5-osobowy zespół, ponad 500 obsłużonych firm.">
+<link rel="stylesheet" href="styles.css?v=15">
+<meta name="description" content="Biuro Rachunkowe Grzegorz Bagiński działa w Pile od 1997 roku. Certyfikat MF 4813/1997, 5-osobowy zespół, ponad 500 obsłużonych firm.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#C96B3F">
 <link rel="canonical" href="https://biurorachunkowe-pila.pl/o-nas.html">
 
 <meta property="og:title" content="O nas — 29 lat księgowości w Pile | Biuro Bagiński">
-<meta property="og:description" content="Biuro Rachunkowe Grzegorz Bagiński działa od 1997 roku. Cert. MF 4813/1997, wykształcenie ekonomiczne (Akademia Ekonomiczna w Poznaniu). 5-osobowy zespół, ponad 500 obsłużonych firm.">
+<meta property="og:description" content="Biuro Rachunkowe Grzegorz Bagiński działa w Pile od 1997 roku. Certyfikat MF 4813/1997, 5-osobowy zespół, ponad 500 obsłużonych firm.">
 <meta property="og:site_name" content="Biuro Rachunkowe Grzegorz Bagiński">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
@@ -29,7 +29,7 @@
 <meta property="og:image:alt" content="Biuro Rachunkowe Grzegorz Bagiński — Księgowość w Pile od 1997">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="O nas — 29 lat księgowości w Pile | Biuro Bagiński">
-<meta name="twitter:description" content="Biuro Rachunkowe Grzegorz Bagiński działa od 1997 roku. Cert. MF 4813/1997, wykształcenie ekonomiczne (Akademia Ekonomiczna w Poznaniu). 5-osobowy zespół, ponad 500 obsłużonych firm.">
+<meta name="twitter:description" content="Biuro Rachunkowe Grzegorz Bagiński działa w Pile od 1997 roku. Certyfikat MF 4813/1997, 5-osobowy zespół, ponad 500 obsłużonych firm.">
 
 <meta name="twitter:image" content="https://biurorachunkowe-pila.pl/og-image.jpg">
 <script type="application/ld+json">
@@ -43,25 +43,47 @@
 }
 </script>
 
-<!-- Google Analytics 4 (Consent Mode v2 — domyślnie wyłączone, włącza się po akceptacji cookies) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RB6FRR4LMF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  <!-- Google Analytics 4 — RODO: skrypt Google wczytuje się DOPIERO po zgodzie.
+       Bez zgody przeglądarka nie nawiązuje żadnego połączenia z serwerami Google. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
 
-  // Consent Mode v2 — RODO: domyślnie wszystko denied.
-  // script.js zmieni analytics_storage na 'granted', jeśli użytkownik kliknie "Akceptuję".
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'analytics_storage': 'denied',
-    'wait_for_update': 500
-  });
+    // Consent Mode v2 — domyślnie wszystko odmowa.
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
 
-  gtag('js', new Date());
-  gtag('config', 'G-RB6FRR4LMF', { 'anonymize_ip': true });
-</script>
+    gtag('js', new Date());
+    gtag('config', 'G-RB6FRR4LMF', { 'anonymize_ip': true });
+
+    // Dociąga gtag.js. Polecenia powyżej czekają w dataLayer i wykonają się
+    // dopiero po wczytaniu — dlatego można je kolejkować przed pobraniem skryptu.
+    window.wczytajGoogleAnalytics = function () {
+      if (window.__gaWczytany) return;
+      window.__gaWczytany = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RB6FRR4LMF';
+      document.head.appendChild(s);
+    };
+
+    // Zgoda z poprzedniej wizyty — wczytaj od razu, bez czekania na baner.
+    try {
+      if (localStorage.getItem('cookies-consent-v2') === 'accepted') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted',
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied'
+        });
+        window.wczytajGoogleAnalytics();
+      }
+    } catch (e) { /* localStorage zablokowany — zostaje odmowa */ }
+  </script>
 </head>
 <body>
 
@@ -209,6 +231,6 @@
   </div>
 </div>
 
-<script src="script.js?v=7"></script>
+<script src="script.js?v=8"></script>
 </body>
 </html>
