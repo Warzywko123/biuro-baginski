@@ -74,7 +74,10 @@
     --sand: #E8DDD2;
   }
 
-  html { scroll-behavior: smooth; }
+  /* overflow-x na SAMYM body nie wystarcza: dokument i tak potrafi być szerszy
+     od ekranu, a wtedy elementy position:fixed (nagłówek, menu) rozciągają się
+     do tej większej szerokości i wypychają hamburgera poza ekran. */
+  html { scroll-behavior: smooth; overflow-x: hidden; }
   body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--brown); overflow-x: hidden; }
 
   /* ── TEXTURE ── */
@@ -1436,7 +1439,9 @@
     .hero-left-col { padding: 9rem 5vw 5rem; align-items: center; text-align: center; }
     .hero-btns { justify-content: center; }
     .hero-sub { max-width: 100%; }
-    .values-grid { grid-template-columns: repeat(2, 1fr); }
+    /* minmax(0,…) zamiast 1fr: bez tego długie słowa („Terminowość") nie pozwalają
+       kolumnie zwęzić się poniżej swojej treści i rozpychają całą stronę. */
+    .values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .services-grid { grid-template-columns: 1fr; }
     .about-layout { grid-template-columns: 1fr; }
     .clients-layout { grid-template-columns: 1fr; }
@@ -1818,4 +1823,26 @@
     }
     .cookie-banner__actions { width: 100%; }
     .cookie-banner__btn { width: 100%; }
+  }
+
+  /* ── Najwęższe telefony (Galaxy Fold złożony, stary iPhone SE) ──
+     Przy 320 px dwie kolumny wartości nie mieszczą się nawet po minmax(0,…),
+     a rozpychanie strony wypychało hamburgera poza ekran — menu stawało się
+     wtedy niedostępne, bo .nav-cta jest na tej szerokości ukryte. */
+  @media (max-width: 380px) {
+    .values-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Nagłówek i menu trzymamy w szerokości ekranu niezależnie od tego, czy
+     jakaś sekcja niżej rozepchnie dokument. */
+  body > nav,
+  .nav-links {
+    max-width: 100vw;
+  }
+
+  /* Dlugie slowa w naglowkach ("Rachunkowosci") rozpychaly uklad przy 320px. */
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    overflow-wrap: break-word;
   }
