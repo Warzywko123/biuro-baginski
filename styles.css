@@ -1459,11 +1459,18 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--warm-border);
       padding: 1rem 5vw 1.5rem;
-      transform: translateY(-110%);
-      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+      /* -110% liczy sie od WYSOKOSCI MENU (ok. 410 px), a menu startuje 80 px
+         od gory. 80 - 1.1*410 = -371, czyli dolna krawedz ladowala na +39 px
+         i zamkniete menu wystawalo na ekran, zaslaniajac logo i hamburgera.
+         Zeby -110% wystarczylo, menu musialoby miec ponad 800 px wysokosci.
+         Odsuwamy je o pelna wysokosc PLUS te 80 px, a visibility gwarantuje,
+         ze nawet przy innej wysokosci nic nie wystaje i nie da sie w to kliknac. */
+      transform: translateY(calc(-100% - 80px));
+      visibility: hidden;
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), visibility 0.3s;
       box-shadow: 0 12px 40px rgba(45,31,20,0.08);
     }
-    .nav-links.is-open { transform: translateY(0); }
+    .nav-links.is-open { transform: translateY(0); visibility: visible; }
     .nav-links li { width: 100%; }
     .nav-links a {
       display: block;
