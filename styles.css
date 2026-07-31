@@ -1436,6 +1436,10 @@
   @media (max-width: 960px) {
     .hero { grid-template-columns: 1fr; }
     .hero-right-col { display: none; }
+    /* Faktura w tle ma 280 px i siedzi w prawym dolnym rogu. Na telefonie tekst
+       hero jest wysrodkowany i ladowal wprost na niej. Chowamy ja razem z prawa
+       kolumna — hero zostaje czysty. */
+    .bg-invoice { display: none; }
     .hero-left-col { padding: 9rem 5vw 5rem; align-items: center; text-align: center; }
     .hero-btns { justify-content: center; }
     .hero-sub { max-width: 100%; }
